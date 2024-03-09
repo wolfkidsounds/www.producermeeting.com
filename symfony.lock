@@ -59,6 +59,9 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "knplabs/knp-time-bundle": {
+        "version": "v2.2.0"
+    },
     "league/flysystem-bundle": {
         "version": "3.3",
         "recipe": {
@@ -123,19 +126,16 @@
             "./config/packages/stof_doctrine_extensions.yaml"
         ]
     },
-    "symfony/asset-mapper": {
-        "version": "6.4",
+    "symfony/apache-pack": {
+        "version": "1.0",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
+            "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
-            "version": "6.4",
-            "ref": "6c28c471640cc2c6e60812ebcb961c526ef8997f"
+            "version": "1.0",
+            "ref": "0f18b4decdf5695d692c1d0dfd65516a07a6adf1"
         },
         "files": [
-            "./assets/app.js",
-            "./assets/styles/app.css",
-            "./config/packages/asset_mapper.yaml",
-            "./importmap.php"
+            "./public/.htaccess"
         ]
     },
     "symfony/console": {
@@ -341,6 +341,18 @@
         },
         "files": [
             "./config/packages/uid.yaml"
+        ]
+    },
+    "symfony/ux-autocomplete": {
+        "version": "2.16",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.6",
+            "ref": "07d9602b7231ba355f484305d6cea58310c01741"
+        },
+        "files": [
+            "./config/routes/ux_autocomplete.yaml"
         ]
     },
     "symfony/ux-turbo": {
