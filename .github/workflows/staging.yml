@@ -29,7 +29,6 @@ jobs:
         echo "MESSENGER_TRANSPORT_DSN=${{ secrets.MESSENGER_TRANSPORT_DSN }}" >> $GITHUB_ENV
         echo "MAILER_DSN=null://null" >> $GITHUB_ENV
         echo "APP_SECRET=${{ secrets.APP_STAGING_SECRET }}" >> $GITHUB_ENV
-        echo "FILE_STORAGE_PATH='public/uploads'" >> $GITHUB_ENV
 
     - name: Dump .env
       run: |
@@ -40,7 +39,6 @@ jobs:
         echo "MESSENGER_TRANSPORT_DSN=${{ secrets.MESSENGER_TRANSPORT_DSN }}" >> .env
         echo "MAILER_DSN=null://null" >> .env
         echo "APP_SECRET=${{ secrets.APP_STAGING_SECRET }}" >> .env
-        echo "FILE_STORAGE_PATH='public/uploads'" >> .env
 
     - name: Cache Composer packages
       id: composer-cache
