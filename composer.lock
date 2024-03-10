@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68065b2f1d3451edc8fdb1d741080f4d",
+    "content-hash": "26aa65e878a07d2bf34070900216e33c",
     "packages": [
         {
             "name": "agence-adeliom/easy-common-bundle",
