@@ -1,3 +1,7 @@
 import './bootstrap.js';
 
-import './styles/app.css';
+//CSS
+import './styles/css/app.css';
+
+//SCSS
+import './styles/scss/app.scss';
