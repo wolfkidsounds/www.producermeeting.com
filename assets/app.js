@@ -1,7 +1,18 @@
 import './bootstrap.js';
 
-//CSS
-import './styles/css/app.css';
+// NODE MODULES JS
+import '@popperjs/core';
+import 'bootstrap';
 
-//SCSS
-import './styles/scss/app.scss';
+// NODE MODULES CSS
+import '@fortawesome/fontawesome-free/css/all.css';
+import 'animate.css';
+
+// JS
+import './js/app.js';
+
+// SCSS
+import './scss/app.scss';
+
+// CSS
+import './css/app.css';
