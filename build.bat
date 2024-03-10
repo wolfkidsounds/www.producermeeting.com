@@ -29,16 +29,6 @@ echo ======================================================
 call composer install --optimize-autoloader
 
 echo ======================================================
-echo Generate Keys
-echo ======================================================
-call php bin/console secrets:generate-keys --env=prod
-
-echo ======================================================
-echo Dump Prod Environment
-echo ======================================================
-call composer dump-env prod
-
-echo ======================================================
 echo Clear Cache
 echo ======================================================
 call php bin/console cache:clear --no-warmup
