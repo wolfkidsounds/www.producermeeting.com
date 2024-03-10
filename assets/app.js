@@ -9,10 +9,10 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import 'animate.css';
 
 // JS
-import './js/app.js';
+import './scripts/js/app.js';
 
 // SCSS
-import './scss/app.scss';
+import './styles/scss/app.scss';
 
 // CSS
-import './css/app.css';
+import './styles/css/app.css';
