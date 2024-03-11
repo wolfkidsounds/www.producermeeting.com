@@ -3,8 +3,7 @@ namespace App\Config;
 
 enum PostStatus: string
 {
-    case Draft = 'DRAFT';
-    case Private = 'PRIVATE';
-    case Scheduled = 'SCHEDULED';
-    case Public = 'PUBLIC';
+    case DRAFT = 'DRAFT';
+    case SCHEDULED = 'SCHEDULED';
+    case PUBLIC = 'PUBLIC';
 }

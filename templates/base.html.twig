@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" data-theme="light" data-lang="en" lang="en" data-sidebar="open">
+<html data-bs-theme="light" data-lang="en" lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Spur1-Media{% endblock %}</title>
-        <link rel="icon" href="{{ asset('build/images/spur1_cropped.svg') }}">
+        <title>{% block title %}Producer Meeting{% endblock %}</title>
+        <link rel="icon" href="{{ asset('build/images/logo.png') }}">
 
-        {% block stylesheets %}{% endblock %}
-            {{ encore_entry_link_tags('app') }}
-        {% block javascripts %}{% endblock %}
-            {{ encore_entry_script_tags('app') }}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}        
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}        
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-
+        <div class="container-fluid">
+            {% block container %}{% endblock %}
+        </div>
+        
         <!-- Modal -->
         <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">

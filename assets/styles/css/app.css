@@ -1,3 +1,18 @@
+@import './app/glass.css';
+@import './app/colors.css';
+
 body {
-    background-color: skyblue;
+	background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+	background-repeat: no-repeat !important;
+	background-attachment: fixed;
+}
+
+.nav-link {
+    background-color: transparent !important;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--text-color-body-invert) !important;
+    background-color: var(--bs-nav-pills-link-active-bg) !important;
 }

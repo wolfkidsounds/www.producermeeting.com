@@ -1,0 +1,27 @@
+{% set menu = {
+    meetings: {
+        label: 'Meetings',
+        path: 'app_index',
+    },
+
+    about: {
+        label: 'About',
+        path: 'app_about',
+    },
+
+    forum: {
+        label: 'Forum',
+        path: 'app_forum',
+    },
+    
+} %}
+
+<div {{ attributes }}>
+    <ul class="nav nav-pills gap-2">
+        {{ component('Header:MenuItem', {
+            menu: menu,
+        }) }}
+    </ul>
+</div>
+
+

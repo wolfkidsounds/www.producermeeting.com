@@ -3,7 +3,7 @@ namespace App\Config;
 
 enum MeetingStatus: string
 {
-    case Upcoming = 'UPCOMING';
-    case Cancelled = 'CANCELLED';
-    case Passed = 'PASSED';
+    case UPCOMING = 'UPCOMING';
+    case CANCELLED = 'CANCELLED';
+    case PASSED = 'PASSED';
 }
