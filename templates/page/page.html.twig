@@ -2,8 +2,7 @@
 {% block container %}
     {{ include('page/_header.html.twig') }}
 
-    <div class="container mt-3">
+    <div id="content" class="container" data-simplebar>
         {% block body %}{% endblock %}
     </div>
-
 {% endblock %}

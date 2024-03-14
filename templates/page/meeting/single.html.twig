@@ -1,2 +1,117 @@
 {% extends 'page/page.html.twig' %}
-{% block title %}{{ post.Name }} | {{ parent() }}{% endblock %}
+{% block title %}{{ title }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div id="Single" class="p-0" data-status="{{ post.MeetingStatus.value|lower }}">
+        <div class="glass border-glass rounded p-3 mb-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="m-0 text-body fw-regular">{{ post.Date|format_datetime('long', 'none', locale="de") }} - {{ post.Speaker.Name }}</h3>
+                    <a class="btn btn-primary text-white" href="{{ path('app_meeting_single_enrollments', { slug: post.Slug }) }}" target="_blank">Anmeldungen</a>
+                </div>
+            {% else %}
+                <h3 class="m-0 text-body fw-regular">{{ post.Date|format_datetime('long', 'none', locale="de") }} - {{ post.Speaker.Name }}</h3>
+            {% endif %}
+        </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <h5 class="text-white">Informationen</h5>
+                    <div class="list-group shadow">
+                        <a href="{{ post.Speaker.URL }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" target="_blank">
+                            <img class="rounded-circle w-32 flex-shrink-0" src="{{ easy_media_path( post.Speaker.Image )|imagine_filter('thumbnail') }}" alt="" width="32" height="32">
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">Sprecher</h6>
+                                    <p class="mb-0 opacity-75">{{ post.Speaker }}</p>
+                                </div>
+                            </div>
+                            <small class="opacity-50 text-nowrap"><i class="fas fa-link"></i></small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle w-32 bg-info">
+                                <i class="fas fa-calendar-days w-32 text-white"></i>
+                            </div>
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">Datum</h6>
+                                    <p class="mb-0 opacity-75">{{ post.Date|format_datetime('long', 'none', locale="de") }}</p>
+                                </div>
+                                <small class="opacity-50 text-nowrap">{{ post.Date|time_diff(locale="de") }}</small>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" target="_blank">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle w-32 bg-info">
+                                <i class="fas fa-clock w-32 text-white"></i>
+                            </div>
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">Beginn</h6>
+                                    <p class="mb-0 opacity-75">{{ post.Date|format_datetime('none', 'short', locale="de") }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{{ post.Location.URL }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" target="_blank">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle w-32 bg-info">
+                                <i class="fas fa-location-dot w-32 text-white"></i>
+                            </div>
+                            <div class="d-flex gap-2 w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-0">Ort</h6>
+                                    <p class="mb-0 opacity-75">{{ post.Location }}</p>
+                                </div>
+                            </div>
+                            <small class="opacity-50 text-nowrap"><i class="fas fa-link"></i></small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <div class="mb-4">
+            <h5 class="text-white">Anmelden</h5>
+            <div class="bg-light rounded shadow p-3">
+                {% if post.MeetingStatus == constant('App\\Config\\MeetingStatus::UPCOMING') %}
+                    {{ form_start(form) }}
+                        <div class="row d-flex align-items-center row-cols-1 row-cols-md-3">
+                            <div class="col">{{ form_row(form.Name) }}</div>
+                            <div class="col">{{ form_row(form.Mail) }}</div>
+                            <div class="col">{{ form_row(form.Submit) }}</div>
+                            <div class="col mt-3">{{ form_row(form.cf_turnstile_response) }}</div>
+                        </div>
+                    {{ form_end(form) }}
+                {% else %}
+                        <div class="row d-flex align-items-center row-cols-1 row-cols-md-3 opacity-25 pe-none">
+                            <div class="col">{{ form_row(form.Name) }}</div>
+                            <div class="col">{{ form_row(form.Mail) }}</div>
+                            <div class="col">{{ form_row(form.Submit) }}</div>
+                        </div>
+                {% endif %}                
+            </div>
+        </div>
+        <div class="mb-4">
+            <h5 class="text-white">Veranstalter und Untersützer</h5>
+            <div class="list-group shadow">
+                {% for host in post.Host %}
+                    <a href="{{ host.URL }}" class="list-group-item list-group-item-action d-flex gap-3 p-3" target="_blank"target="_blank">
+                        <img class="rounded-circle w-32" src="{{ easy_media_path( host.Image )|imagine_filter('thumbnail') }}" alt="" width="32" height="32">
+                        <div class="d-flex gap-2 w-100 justify-content-between">
+                            <div>
+                                <h6 class="mb-0">{{ host.Name }}</h6>
+                                <p class="mb-0 opacity-75">Unterstützer</p>
+                            </div>
+                        </div>
+                        <small class="opacity-50 text-nowrap"><i class="fas fa-link"></i></small>
+                    </a>
+                {% endfor %}
+                <a href="{{ post.Location.URL }}" class="list-group-item list-group-item-action d-flex gap-3 p-3" target="_blank">
+                    <img class="bg-dark rounded-circle w-32" src="{{ easy_media_path( post.Location.Image )|imagine_filter('thumbnail') }}" alt="" width="32" height="32">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div>
+                            <h6 class="mb-0">{{ post.Location.Name }}</h6>
+                            <p class="mb-0 opacity-75">Veranstaltungsort</p>
+                        </div>
+                    </div>
+                    <small class="opacity-50 text-nowrap"><i class="fas fa-link"></i></small>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
