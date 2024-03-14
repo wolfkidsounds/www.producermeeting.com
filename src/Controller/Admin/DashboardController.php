@@ -43,7 +43,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Meetings');
         yield MenuItem::linkToCrud('Meetings', 'fas fa-calendar-days', Meeting::class);
         yield MenuItem::linkToCrud('Speaker', 'fas fa-person', Speaker::class);
-        yield MenuItem::linkToCrud('Materials', 'fas fa-file', Material::class);
         
         yield MenuItem::section('Other');
         yield MenuItem::linkToCrud('Locations', 'fas fa-location-dot', Location::class);
