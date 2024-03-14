@@ -21,6 +21,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Set Up Environment Variables
+      run: |
+        echo "APP_ENV=prod" >> $GITHUB_ENV
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+        echo "MESSENGER_TRANSPORT_DSN=${{ secrets.MESSENGER_TRANSPORT_DSN }}" >> $GITHUB_ENV
+        echo "MAILER_DSN=null://null" >> $GITHUB_ENV
+        echo "APP_SECRET=${{ secrets.APP_SECRET }}" >> $GITHUB_ENV
+
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v2
