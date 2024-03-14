@@ -1,4 +1,4 @@
-<?php
+<?php // src/Entity/Meeting.php
 
 namespace App\Entity;
 
@@ -34,9 +34,6 @@ class Meeting
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $scheduledAt = null;
 
-    #[ORM\ManyToMany(targetEntity: Speaker::class)]
-    private Collection $Speaker;
-
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Location $Location = null;
@@ -59,9 +56,15 @@ class Meeting
     #[ORM\Column(length: 255)]
     private ?string $Slug = null;
 
+    #[ORM\Column(type: 'easy_media_type', nullable: true)]
+    private ?string $Image = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Speaker $Speaker = null;
+
     public function __construct()
     {
-        $this->Speaker = new ArrayCollection();
         $this->Host = new ArrayCollection();
         $this->Enrollments = new ArrayCollection();
     }
@@ -75,6 +78,10 @@ class Meeting
 
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt($dateTimeNow);
+        }
+
+        if($this->getPublishedAt() === null && $this->getPostStatus() === PostStatus::PUBLIC) {
+            $this->setPublishedAt($dateTimeNow);
         }
     }
 
@@ -127,30 +134,6 @@ class Meeting
     public function setScheduledAt(\DateTimeImmutable $scheduledAt): static
     {
         $this->scheduledAt = $scheduledAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Speaker>
-     */
-    public function getSpeaker(): Collection
-    {
-        return $this->Speaker;
-    }
-
-    public function addSpeaker(Speaker $speaker): static
-    {
-        if (!$this->Speaker->contains($speaker)) {
-            $this->Speaker->add($speaker);
-        }
-
-        return $this;
-    }
-
-    public function removeSpeaker(Speaker $speaker): static
-    {
-        $this->Speaker->removeElement($speaker);
 
         return $this;
     }
@@ -265,6 +248,30 @@ class Meeting
     public function setSlug(string $Slug): static
     {
         $this->Slug = $Slug;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(?string $Image): static
+    {
+        $this->Image = $Image;
+
+        return $this;
+    }
+
+    public function getSpeaker(): ?Speaker
+    {
+        return $this->Speaker;
+    }
+
+    public function setSpeaker(?Speaker $Speaker): static
+    {
+        $this->Speaker = $Speaker;
 
         return $this;
     }

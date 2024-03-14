@@ -1,11 +1,14 @@
-<?php
+<?php // src/Entity/Enrollment.php
 
 namespace App\Entity;
 
-use App\Repository\EnrollmentRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EnrollmentRepository;
 
 #[ORM\Entity(repositoryClass: EnrollmentRepository::class)]
+#[ORM\UniqueConstraint('uniqe_enrollment', [], ['Meeting', 'Mail'])]
+#[ORM\HasLifecycleCallbacks]
 class Enrollment
 {
     #[ORM\Id]
@@ -21,6 +24,19 @@ class Enrollment
 
     #[ORM\Column(length: 255)]
     private ?string $Mail = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updatedTimestamps(): void
+    {
+        $dateTimeNow = new DateTimeImmutable('now');
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt($dateTimeNow);
+        }
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +75,18 @@ class Enrollment
     public function setMail(string $Mail): static
     {
         $this->Mail = $Mail;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

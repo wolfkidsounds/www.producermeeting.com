@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\EasyMedia\Media;
 use App\Repository\LocationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,7 +18,7 @@ class Location
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'easy_media_type', nullable: true)]
     private ?string $Image = null;
 
     #[ORM\Column(length: 255)]
