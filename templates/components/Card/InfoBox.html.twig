@@ -1,3 +1,8 @@
-<div {{ attributes }}>
-    <!-- component html -->
+<div class="card-footer p-3 bg-light glass glass-5 rounded-bottom text-body" {{ attributes }}>
+    {% for item in this.items %}
+        {{ component('Card:InfoItem', {
+            value: item.value,
+            icon: item.icon,
+        }) }}
+    {% endfor %}
 </div>

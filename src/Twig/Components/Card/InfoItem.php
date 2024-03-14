@@ -7,4 +7,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent]
 final class InfoItem
 {
+    public string $value;
+    public string $icon;
 }
