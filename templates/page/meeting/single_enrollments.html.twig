@@ -1,0 +1,46 @@
+{% extends 'page/page.html.twig' %}
+{% block title %}{{ title }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div id="Single" class="p-0" data-status="{{ post.MeetingStatus.value|lower }}">
+        <div class="glass border-glass rounded p-3 mb-4">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="m-0 text-body fw-regular">{{ post.Date|format_datetime('long', 'none', locale="de") }} - {{ post.Speaker.Name }}</h3>
+                    <a class="btn btn-primary text-white" href="{{ path('app_meeting_single', { slug: post.Slug }) }}">Zurück</a>
+                </div>
+            {% else %}
+                <h3 class="m-0 text-body fw-regular">{{ post.Date|format_datetime('long', 'none', locale="de") }} - {{ post.Speaker.Name }}</h3>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <h5 class="text-white">Anmeldungen</h5>
+            <div class="card p-3 rounded shadow">
+                <table class="table table-hover table-responsive table-striped">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">E-Mail</th>
+                            <th scope="col">Angemeldet am</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for enrollment in post.Enrollments %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ enrollment.Name }}</td>
+                                <td>{{ enrollment.Mail }}</td>
+                                <td>{{ enrollment.createdAt|date() }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">Wir haben leider keine Einträge gefunden.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

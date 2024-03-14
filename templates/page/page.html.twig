@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+    {{ include('page/_header.html.twig') }}
+
+    <div id="content" class="container" data-simplebar>
+        {% block body %}{% endblock %}
+    </div>
+{% endblock %}

@@ -1,3 +1,1 @@
-<?php // src/public/maintenance.php
-
-echo 'we are on maintenance mode';
+<?php require_once './maintenance.html';

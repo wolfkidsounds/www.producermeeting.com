@@ -1,0 +1,50 @@
+{% extends 'page/page.html.twig' %}
+{% block title %}{{ title }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <form method="post">
+        <div class="card glass border border-glass text-white">
+            <div class="card-header p-3">
+                <h1 class="h3 font-weight-normal m-0">Bitte melde dich an</h1>
+            </div>
+            <div class="card-body p-3">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                    
+                <div class="mb-3">
+                    <label for="username">Email</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Passwort</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input class="form-check-input" type="checkbox" name="_remember_me">
+                        <span>An mich erinnern</span>
+                    </label>
+                </div>
+
+                <input  type="hidden" 
+                        name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                >
+            </div>
+            <div class="card-footer p-3 d-flex justify-content-end">
+                <button class="btn btn-primary text-light" type="submit">
+                    Anmelden
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

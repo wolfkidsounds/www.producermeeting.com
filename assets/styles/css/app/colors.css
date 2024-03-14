@@ -1,0 +1,8 @@
+:root {
+    --text-color-body:#2D2D34;
+    --text-color-body-invert:#fff;
+}
+
+.text-color-body {
+    color:var(--text-color-body) !important;
+}

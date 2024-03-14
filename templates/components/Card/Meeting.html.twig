@@ -1,0 +1,42 @@
+<div class="card glass rounded h-100" data-status='{{ this.post.MeetingStatus.value|lower }}'>
+    <a href="{{ path('app_meeting_single', { slug: this.post.Slug }) }}" class="text-decoration-none" {{ attributes }}>
+        <div class="card-body p-0">
+            {{ component('Card:Badge', {
+                title: this.post.MeetingStatus.value,
+            }) }}
+            <div class="p-3 bg-transparent rounded-top">
+                {{ component('Card:Image', {
+                    image: this.post.Image,
+                }) }}
+            </div>
+        </div>
+
+        {% set InfoBox = {
+            items: {
+                speaker: {
+                    value: this.post.Speaker,
+                    icon: 'fa-user',
+                },
+
+                date: {
+                    value: this.post.Date|format_datetime('long', 'none', locale="de"),
+                    icon: 'fa-calendar-days',
+                },
+
+                time: {
+                    value: this.post.Date|format_datetime('none', 'short', locale="de"),
+                    icon: 'fa-clock',
+                },
+
+                location: {
+                    value: this.post.Location,
+                    icon: 'fa-location-dot',
+                },
+            },
+
+        } %}
+        {{ component('Card:InfoBox', {
+            items: InfoBox.items,
+        }) }}
+    </a>
+</div>

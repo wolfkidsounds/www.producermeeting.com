@@ -18,8 +18,9 @@ return [
     League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
     Adeliom\EasyCommonBundle\EasyCommonBundle::class => ['all' => true],
     Adeliom\EasyMediaBundle\EasyMediaBundle::class => ['all' => true],
-    Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
-    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
     Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
+    Zemasterkrom\CloudflareTurnstileBundle\ZmkrCloudflareTurnstileBundle::class => ['all' => true],
+    Flasher\Symfony\FlasherSymfonyBundle::class => ['all' => true],
+    Flasher\Notyf\Symfony\FlasherNotyfSymfonyBundle::class => ['all' => true],
 ];

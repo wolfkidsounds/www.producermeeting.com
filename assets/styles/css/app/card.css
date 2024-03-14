@@ -1,0 +1,65 @@
+:root {
+    --glass-background-red: 255, 105, 120;
+    --glass-background-green: 165, 248, 211;
+}
+
+#Main .card[data-status] {
+    background:rgba(var(--glass-background-light), var(--glass-alpha));
+    opacity: .8;
+    backdrop-filter: blur(40px);
+    transition: .3s ease-in-out;
+}
+
+#Main .card[data-status]:hover {
+    opacity: 1;
+    box-shadow: var(--bs-box-shadow) !important;
+}
+
+#Main .card[data-status="cancelled"],
+#Main .card[data-status="passed"] {
+    opacity: .4;
+    background: transparent !important;
+}
+
+#Main .card[data-status="cancelled"] img,
+#Main .card[data-status="passed"] img {
+    filter:grayscale(1);
+}
+
+#Main .card[data-status="cancelled"] {
+    pointer-events:none;
+}
+
+#Main .card-badge {
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index:1;
+}
+
+#Main .card[data-status="passed"] .card-badge {
+    --glass-alpha: .9;
+    background: rgba(var(--glass-background-light), var(--glass-alpha)) !important;
+}
+
+#Main .card[data-status="upcoming"] .card-badge {
+    --glass-alpha: .9;
+    background: rgba(var(--glass-background-green), var(--glass-alpha)) !important;
+}
+
+#Main .card[data-status="cancelled"] .card-badge {
+    --glass-alpha: .9;
+    background: rgba(var(--glass-background-red), var(--glass-alpha)) !important;
+}
+
+.glass .card-header,
+.glass .card-footer {
+    background: rgba(var(--glass-background-light), var(--glass-alpha));
+}
+
+.glass .card-header {
+    border-bottom: var(--bs-card-border-width) solid var(--glass-border) !important;
+}
+
+.glass .card-footer {
+    border-top: var(--bs-card-border-width) solid var(--glass-border) !important;
+}
