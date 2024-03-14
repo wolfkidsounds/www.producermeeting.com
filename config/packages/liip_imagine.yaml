@@ -8,28 +8,14 @@ liip_imagine:
     # your filter sets are defined here
     filter_sets:
         cache: ~
-        thumbnail_small:
-            quality: 10
-            filters:
-                scale:
-                    dim: [ 128, 128 ] # (relative down-scale)
-
-        thumbnail_grayscale_small:
-            quality: 10
-            filters:
-                grayscale: ~
-                scale:
-                    dim: [ 128, 128 ] # (relative down-scale)
-
         thumbnail:
-            quality: 90
+            quality: 100
             filters:
                 scale:
                     dim: [ 1080, 1080 ] # (relative down-scale)
 
-        thumbnail_grayscale:
-            quality: 90
+        large:
+            quality: 100
             filters:
-                grayscale: ~
                 scale:
-                    dim: [ 1080, 1080 ] # (relative down-scale)
+                    dim: [ 2160, 2160 ] # (relative down-scale)
