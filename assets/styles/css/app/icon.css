@@ -1,0 +1,9 @@
+i,
+.fa,
+.fas,
+.fa-solid {
+    display:inline-flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}

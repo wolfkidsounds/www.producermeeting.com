@@ -1,29 +1,23 @@
 :root {
-	--glass-background: rgba(255, 255, 255, 0.4);
+    --glass-alpha: .5;
+	--glass-background-light: 255, 255, 255;
+    --glass-background-dark: 0, 0, 0;
 	--glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	--glass-backdrop-filter: blur(20px);
 	--glass-border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.glass {
-    background: var(--glass-background);
+.glass, .glass-3 {
+    background: rgba(var(--glass-background-light), calc(var(--glass-alpha)));
     box-shadow: var(--glass-box-shadow);
     backdrop-filter: var(--glass-backdrop-filter);
 }
 
+.glass-5 {
+    background: rgba(var(--glass-background-light), var(--glass-alpha));
+    backdrop-filter: blur(40px);
+}
+
 .border-glass {
     border: var(--glass-border);
-}
-
-.glass .card-header,
-.glass .card-footer {
-    background: var(--glass-background);
-}
-
-.glass .card-header {
-    border-bottom: var(--bs-card-border-width) solid var(--glass-border) !important;
-}
-
-.glass .card-footer {
-    border-top: var(--bs-card-border-width) solid var(--glass-border) !important;
 }
