@@ -1,6 +1,6 @@
 {% for item in this.menu %}
     <li class="nav-item">
-        <a  class="nav-link px-2 py-1 fs-5 fw-bold text-color-body text-color-body-invert hover rounded-1 
+        <a  class="nav-link px-2 py-1 fs-6 fs-md-5 fw-bold text-color-body text-color-body-invert hover rounded-1 
             {% if app.request.pathinfo == path(item.path) %} active{% endif %}"
             href="{{ path(item.path) }}" 
             {% if app.request.pathinfo == path(item.path) %} aria-current="page"{% endif %}>
