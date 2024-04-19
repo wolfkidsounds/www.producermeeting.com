@@ -377,7 +377,7 @@
         ]
     },
     "twig/extra-bundle": {
-        "version": "v3.8.0"
+        "version": "v3.9.3"
     },
     "zemasterkrom/zmkr-cloudflare-turnstile-bundle": {
         "version": "1.0",
