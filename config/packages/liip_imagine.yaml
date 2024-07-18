@@ -4,17 +4,25 @@ liip_imagine:
     resolvers:
         default:
             web_path: ~
+<<<<<<< Updated upstream
+=======
+
+    webp:
+        generate: true
+>>>>>>> Stashed changes
 
     # your filter sets are defined here
     filter_sets:
         cache: ~
         thumbnail:
+            format: webp
             quality: 100
             filters:
                 scale:
                     dim: [ 1080, 1080 ] # (relative down-scale)
 
         large:
+            format: webp
             quality: 100
             filters:
                 scale:
